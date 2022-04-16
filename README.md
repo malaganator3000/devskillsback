@@ -194,9 +194,9 @@ POST `/v1/payables`
 | `paymentMethod` | true | object | Indica el tipo de método de pago. <br/><br/> Si el tipo del método de pago es `cash` no se re requiere llenar los campos de la tarjeta |
 | `paymentMethod.type` | true | `cash`,`card`,`store` | Tipo del método de pago|
 | `paymentMethod.card_number` | optional ó true | string | Numero de la tarjeta. Requerido si el `type` es `card`|
-| `paymentMethod.exp_month` | optional ó true | `cash`,`card`,`store` | Mes de caducidad de la tarjeta. Requerido si el `type` es `card`|
-| `paymentMethod.exp_year` | optional ó true | `cash`,`card`,`store` | Año de caducidad de la tarjeta. Requerido si el `type` es `card`|
-| `paymentMethod.holdername` | optional ó true | `cash`,`card`,`store` | Titular de la tarjeta. Requerido si el `type` es `card`|
+| `paymentMethod.exp_month` | optional ó true | string | Mes de caducidad de la tarjeta. Requerido si el `type` es `card`|
+| `paymentMethod.exp_year` | optional ó true | string| Año de caducidad de la tarjeta. Requerido si el `type` es `card`|
+| `paymentMethod.holdername` | optional ó true | string| Titular de la tarjeta. Requerido si el `type` es `card`|
 
 ```
 {
