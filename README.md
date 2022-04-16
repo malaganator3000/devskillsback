@@ -204,7 +204,7 @@ POST `/v1/payables`
   "barCode": "87b9d1f2-6249-4d97-935b-131a73416c94",
   "paymentDate": "2022-04-19",
   "paymentMethod": {
-    "type": "cash",
+    "type": "card",
     "card_number": "4242424242424242",
     "exp_month": "4",
     "exp_year": "24",
