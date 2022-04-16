@@ -37,10 +37,8 @@ $ npm install
 
 ```bash
 # development
-$ npm run start
+$ npm run start:dev
 
-# production mode
-$ npm run start:prod
 ```
 
 ## API ENDPOINST
