@@ -191,7 +191,7 @@ POST `/v1/payables`
 | `paymentAmount` | true | float | Importe de la `transaction` |
 | `paymentDate` | true | date | | Fecha de pago de la `transaction`
 | `barCode` | true | uuid | Código unico |
-| `paymentMethod` | Indica el tipo de método de pago. <br/><br/> Si el tipo del método de pago es `cash` no se re requiere llenar los campos de la tarjeta |
+| `paymentMethod` | true | object | Indica el tipo de método de pago. <br/><br/> Si el tipo del método de pago es `cash` no se re requiere llenar los campos de la tarjeta |
 | `paymentMethod.type` | true | `cash`,`card`,`store` | Tipo del método de pago|
 | `paymentMethod.card_number` | optional ó true | string | Numero de la tarjeta. Requerido si el `type` es `card`|
 | `paymentMethod.exp_month` | optional ó true | `cash`,`card`,`store` | Mes de caducidad de la tarjeta. Requerido si el `type` es `card`|
