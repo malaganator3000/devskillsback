@@ -163,7 +163,7 @@ GET `/v1/transactions?start_date=2022-04-15&end_date=2022-04-17`
 {
 	"serviceAmount":3499.99,
 	"dueDate":"2022-04-20",
-	"service":"electric_energy",
+	"service":"energy",
 	"description":"Edenor S.A."
 }
 ```
@@ -189,9 +189,14 @@ POST `/v1/payables`
 | Parametro | Required | Tipo | Descripción |
 | --------: | :------: | :-------------------------------: | ---------------------------------------------------------------------------- |
 | `paymentAmount` | true | float | Importe de la `transaction` |
-| `paymentDate` | true | date |  | Fecha de pago de la `transaction`
+| `paymentDate` | true | date | | Fecha de pago de la `transaction`
 | `barCode` | true | uuid | Código unico |
-| `paymentMethod` <br/><br/> {"`type`" (required): `cash`,`card`,`store`,"card_number" (optional si `type` no es `card`):string,"exp_month" (optional si `type` no es `card`):string,"exp_year" (optional si `type` no es `card`):string,"holdername" (optional si `type` no es `card`):string} | true | object | Indica el tipo de método de pago. <br/><br/> Si el tipo del método de pago es `cash`  no se re requiere llenar los campos de la tarjeta |
+| `paymentMethod` | Indica el tipo de método de pago. <br/><br/> Si el tipo del método de pago es `cash` no se re requiere llenar los campos de la tarjeta |
+| `paymentMethod.type` | true | `cash`,`card`,`store` | Tipo del método de pago|
+| `paymentMethod.card_number` | optional ó true | string | Numero de la tarjeta. Requerido si el `type` es `card`|
+| `paymentMethod.exp_month` | optional ó true | `cash`,`card`,`store` | Mes de caducidad de la tarjeta. Requerido si el `type` es `card`|
+| `paymentMethod.exp_year` | optional ó true | `cash`,`card`,`store` | Año de caducidad de la tarjeta. Requerido si el `type` es `card`|
+| `paymentMethod.holdername` | optional ó true | `cash`,`card`,`store` | Titular de la tarjeta. Requerido si el `type` es `card`|
 
 ```
 {
