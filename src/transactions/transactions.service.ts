@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { Op } from 'sequelize';
 import { Card, CardType } from 'src/cards/entities/card.entity';
 import { Payable, StatusPayable } from 'src/payables/entities/payable.entity';
@@ -25,7 +25,15 @@ export class TransactionsService {
 			);
 
 			if (!payable) {
-				throw `No payable was found with ${createTransactionDto.barCode}.`;
+				throw new BadRequestException(
+					`No payable was found with ${createTransactionDto.barCode}.`,
+				);
+			}
+
+			if (payable.status == StatusPayable.PAID) {
+				throw new BadRequestException(
+					`Payable is paid`,
+				);
 			}
 			let transactionDb: Transaction;
 			let paymentMethod: PaymentMethod;
@@ -159,7 +167,6 @@ export class TransactionsService {
 			],
 		});
 
-
 		const groupBy = function (items: any[], key: string) {
 			const raw = items.reduce(function (acc, item) {
 				(acc[item[key].toISOString()] =
@@ -182,7 +189,7 @@ export class TransactionsService {
 		};
 
 		return {
-			items:groupBy(response, 'paymentDate'),
+			items: groupBy(response, 'paymentDate'),
 		};
 	}
 }
